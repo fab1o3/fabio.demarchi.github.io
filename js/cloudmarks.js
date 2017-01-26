@@ -27,6 +27,7 @@ function addBookmark() {
 		'url': url
 	});
 
+	save();
 	displayBookmarks();
 }
 
@@ -42,6 +43,7 @@ function removeBookmark() {
 			return e.url !== url;
 		});
 
+	save();
 	displayBookmarks();
 }
 
@@ -66,7 +68,7 @@ function trimUrl(url) {
 		return tempUrl;
 	}
 }
-function save(event) {
+function save() {
 	var link = document.createElement('a');
 	link.download = 'bookmarks.json';
 	link.href = 'data:,' + JSON.stringify(bookmarkList);
