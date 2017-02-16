@@ -23,8 +23,14 @@
 					<div class="w3-white w3-text-grey w3-card-4">
 						<div class="w3-container">
 							<h2>Fabio De Marchi</h2>
-							<p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-indigo"></i><label id="job" /></p>
-							<p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-indigo"></i><label id="city" /></p>
+							<p>
+								<i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-indigo"></i>
+								<label res="job" />
+							</p>
+							<p>
+							    <i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-indigo"></i>
+							    <label res="city" />
+					        </p>
 							<p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-indigo"></i><a href="mailto:fabio.demarchi@fastwebnet.it" target="_top">fabio.demarchi@fastwebnet.it</a></p>
 							<p>
 								<script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
@@ -41,12 +47,12 @@
 							<hr />
 
 							<p>
-								<i><label id="quote1" /></i>
+								<i><label res="quote1" /></i>
 								<br />
 								<b>Albert Einstein</b>
 							</p>
 							<p>
-								<i><label id="quote2" /></i>
+								<i><label res="quote2" /></i>
 								<br />
 								<b>Bruce Lee</b>
 							</p>
@@ -68,7 +74,7 @@
 				</div>
 
 				<!-- Right Column -->
-				<div class="w3-twothird" id="cv">
+				<div class="w3-twothird" res="cv_url">
 				</div>
 				<!-- End Right Column -->
 
@@ -78,49 +84,43 @@
 			<!-- End Page Container -->
 		</div>
 
-        <footer class="w3-container w3-indigo w3-margin-top">
-        	<div class="w3-row">
-        		<div class="w3-col l4 m4 s1"><p/></div>
-        		<div class="w3-col l4 m4 s10">
-        			<p class="w3-center">Hosted by 
-        				<a href="https://github.com/fab1o3" target="_blank">
-        					<i class="fa fa-github w3-hover-text-black w3-large"></i>
-        				</a>
-        			</p>
-        
-        			<p class="w3-center">Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-        		</div>
-        		<div class="w3-col l4 m4 s1">
-        			<div class="w3-dropdown-hover w3-right w3-third">
-        				<p><i class="fa fa-language w3-large w3-right w3-hover-text-black"></i></p>
-        				<div class="w3-dropdown-content w3-indigo w3-card-4" style="bottom: 100%; right:-15px;">
-        					<a href="#" onclick="translateTo('en');"><label id="en" /></a>
-        					<a href="#" onclick="translateTo('it');"><label id="it" /></a>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </footer>
+		<footer class="w3-container w3-indigo w3-margin-top">
+			<div class="w3-row">
+				<div class="w3-col l4 m4 s1"><p/></div>
+				<div class="w3-col l4 m4 s10">
+					<p class="w3-center">Hosted by 
+						<a href="https://github.com/fab1o3" target="_blank">
+							<i class="fa fa-github w3-hover-text-black w3-large"></i>
+						</a>
+					</p>
+
+					<p class="w3-center">Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+				</div>
+				<div class="w3-col l4 m4 s1">
+					<div class="w3-dropdown-hover w3-right w3-third">
+						<p><i class="fa fa-language w3-large w3-right w3-hover-text-black"></i></p>
+						<div class="w3-dropdown-content w3-indigo w3-card-4" style="bottom: 100%; right:-15px;">
+							<a href="#" onclick="translateTo('en');"><label res="en" /></a>
+							<a href="#" onclick="translateTo('it');"><label res="it" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 
 		<script type='text/javascript' src='//www.w3schools.com/utilcave_com/inc/ezf-min.php?a=a&cb=1&shcb=5' style='display:none;'></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 		<script src='script/i18n.min.js'></script>
 		<script>
-	        translateTo('en');
+			translateTo('en');
             function translateTo(language) {
-            	$.ajax('res/' + language + '.json').done(function (text) {
-            		//  Parse it
-            		//data = JSON.parse(text);
+            	$.ajax('res/' + language + '.json').done(function (data) {
             		//  Set the data
-            		i18n.translator.add(text);
+            		i18n.translator.add(data);
             		//  Translate away
-            		$('#job').text(i18n('job'));
-            		$('#city').text(i18n('city'));
-            		$('#quote1').text(i18n('quote1'));
-            		$('#quote2').text(i18n('quote2'));
-            		$('#cv').html(i18n('cv_url'));
-            		$('#en').text(i18n('en'));
-            		$('#it').text(i18n('it'));
+            		$('*[res]').each(function () {
+            			$(this).html(i18n($(this).attr('res')));
+            		});
             	});
             }
 		</script>
