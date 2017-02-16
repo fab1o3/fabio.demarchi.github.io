@@ -1,0 +1,11 @@
+{
+    "values":{
+    "job":"Software and web developer",
+    "city":"Genova, Italy",
+    "quote1":"Everything should be made as simple as possible, but not simpler.",
+    "quote2":"It's not the daily increase but daily decrease. Hack away at the unessential.",
+    "cv_url":"<iframe src='https://onedrive.live.com/embed?cid=B7D3F728613A0C00&resid=B7D3F728613A0C00%215060&authkey=AKCT8_sSztbHJtk&em=2&wdStartOn=1&wdEmbedCode=0' width='100%' height='900px' frameborder='0'>Documento di <a target='_blank' href='https://office.com'>Microsoft Office</a> incorporato, con tecnologia <a target='_blank' href='https://office.com/webapps'>Office Online</a>.</iframe>",
+    "en":"English",
+    "it":"Italian"
+    }    
+}
